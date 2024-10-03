@@ -18,10 +18,16 @@ class PartnerSellsController extends Controller
     }
     public function verifyStatus($status)
     {
-        if($status === 'APPROVED' or 'Pago'){return 'APPROVED';};
-        if($status === 'CANCELED'){return 'DENIED';};
-
+        switch ($status) {
+            case 'Pago':
+                return 'APPROVED';
+              break;
+            case 'CANCELED':
+                return 'DENIED';
+              break;
+            default:
         return 'unknown status';
+     }
     }
     public function vefifyPayload($request)
     {
